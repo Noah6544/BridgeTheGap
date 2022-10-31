@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+{% extends 'users/base.html' %}
+
+
+<html>
+    <title>
+        {% block title %}
+            User Home Page
+        {% endblock %}
+    </title>
+
+{% block main_content %}
+    <body>
+
+            Hey {{ username }} Welcome to the home page!!
+
+
+    </body>
+{% endblock %}
+</html>

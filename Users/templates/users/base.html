@@ -1,0 +1,63 @@
+{% load static %}
+<link rel="stylesheet" href="{% static 'base.css' %}">
+
+<style>
+.topbar {
+    height:200px;
+    width:100%;
+    position: fixed;
+    top:0;
+    left:0;
+    background-color:#23DCA6;
+}
+
+.topbar a {
+    padding: 6px 8px 6px 16px;
+    font-size: 25px;
+    display:block;
+}
+
+.main_content{
+
+}
+.title{
+    margin-top:210px;
+}
+
+</style>
+
+<html>
+    <head>
+
+
+
+
+        <div class="title">
+            {% block title %}
+            <title>
+                The Bridge Website
+            </title>
+            {% endblock %}
+        </div>
+
+    </head>
+
+    <body>
+        <div class="topbar">
+            <a href="/users/profile">Profile</a>
+            <a href="/''">Return to Homepage</a>
+
+            {% if user.is_authenticated %}
+                <a href="/users/logout">Logout</a>
+            {% else %}
+                <a href="/users/login">Login</a>
+            {% endif %}
+
+        </div>
+
+            <div class= "main_content", id="content">
+            {% block main_content %}
+            {% endblock %}
+        </div>
+    </body>
+</html>
