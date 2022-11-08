@@ -1,12 +1,22 @@
 <!DOCTYPE html>
 <html>
     <h1>
-        Welcome to HomePage
+        Welcome to The Gap
     </h1>
 
 
+    What is this?
+
+    Why is this?
+
+    Course layout:
+    {% if user.is_authenticated %}
+     You're already logged In! Head to your <a href="{% url 'Users:profile_url' %}"> profile</a>
+    {% else %}
     <p>Don't have an account? <a href="/users/register">register here!</a></p>
     <p>Already have an account? <a href="/users/login">login here!</a></p>
+    {% endif %}
+
 
 
 

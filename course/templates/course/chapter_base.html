@@ -1,0 +1,70 @@
+{% load static %}
+<link rel="stylesheet" href="{% static 'base.css' %}">
+
+
+<html>
+    <head>
+
+        <div class="title">
+            {% block title %}
+            <title>
+                The Bridge Website
+            </title>
+            {% endblock %}
+        </div>
+
+    </head>
+
+    <body>
+        <div class="topbar">
+            <a href="/users/profile">Profile</a>
+            <a href="/">Return to Homepage</a>
+
+            {% if user.is_authenticated %}
+                <a href="/users/logout">Logout</a>
+                <a href="/course">Start Learning!</a>
+            {% else %}
+                <a href="/users/login">Login</a>
+            {% endif %}
+        </div>
+
+         <div class = "course_title">
+             {{ Instruction.title}}
+        </div>
+
+
+        <div class= "chapter_covers">
+            This Chapter Covers:<br>
+            {{ Instruction.chapter_covers }}
+        </div>
+
+        <div class= "main_content">
+            Read Carefully.
+            <br>{{ Instruction.content }}
+        </div>
+
+        <div class = "summary">
+
+                This is a quick summary of the chapter:
+                <br>{{ Instruction.summary }}
+
+        </div>
+
+         <div class = "important_content">
+             Note the following:
+
+             {% for important in ImportantInstructionContent %}
+             <ul>
+                 <ol>
+                     {{ important.important_content }}
+                 </ol>
+             </ul>
+             {% endfor %}
+        </div>
+
+
+    Do you understand the content?
+    Head over to take the <a href="{% url 'course:Quiz_url' Instruction.id %}">Quiz!</a>
+
+    </body>
+</html>

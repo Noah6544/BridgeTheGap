@@ -45,9 +45,9 @@
     <body>
         <div class="topbar">
             <a href="/users/profile">Profile</a>
-            <a href="/''">Return to Homepage</a>
 
             {% if user.is_authenticated %}
+                <a href="/course">Start Learning!</a>
                 <a href="/users/logout">Logout</a>
             {% else %}
                 <a href="/users/login">Login</a>

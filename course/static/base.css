@@ -1,0 +1,47 @@
+.topbar {
+    height:200px;
+    width:100%;
+    position:a fixed;
+    top:0;
+    left:0;
+    background-color:#23DCA6;
+}
+
+.topbar a {
+    padding: 6px 8px 6px 16px;
+    font-size: 25px;
+    display:block;
+}
+
+.main_content{
+
+}
+.title{
+    margin-top:210px;
+}
+
+.heading {
+    font-size: 15px;
+
+}
+
+ol.list {
+  list-style-type: lower-alpha;
+}
+
+.incomplete_chapter {
+    border: 1px solid black;
+    margin-left: 150px;
+    margin-right: 150px;
+
+    font-size: 15px;
+    text-shadow: 1px 1px 10px E6BBAD;
+    text-align:center;
+    box-shadow: 0px 0px 5px grey;
+
+    padding: 20px;
+    border: 2px solid grey;
+    border-radius: 25px;
+    background-color:#add8e6;
+
+}
