@@ -1,3 +1,4 @@
+
 .topbar {
     height:200px;
     width:100%;
@@ -10,7 +11,6 @@
 .topbar a {
     padding: 6px 8px 6px 16px;
     font-size: 25px;
-    display:block;
 }
 
 .main_content{
@@ -21,8 +21,7 @@
 }
 
 .heading {
-    font-size: 15px;
-
+    font-size: 30px;
 }
 
 ol.list {

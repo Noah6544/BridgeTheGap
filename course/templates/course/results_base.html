@@ -20,14 +20,12 @@
 
 
     </head>
-    results page!
     <body>
         <div class="topbar">
             <a href="/users/profile">Profile</a>
 
             {% if user.is_authenticated %}
                 <a href="/users/logout">Logout</a>
-                  results page!
             {% else %}
                 You're not logged in!
                 <a href="/users/login">Login</a>
@@ -65,14 +63,18 @@
             </div>
         {% endif %}
         <div class="next_button">
-            <form action="{% url 'course:Chapter_url' Quiz.id %}">
-                <input type="submit" value="submit">Previous Chapter</input>
+            <form action="{% url 'course:Chapter_url' question.id|add:1 %}" method="post">
+                {% csrf_token %}
+
+                <input type="submit" value="Next Chapter">
             </form>
 
         </div>
         <div class="back_button">
-            <form action="{% url 'course:Chapter_url' Quiz.id %}">
-                <input type="submit" value="submit">Previous Chapter</input>
+            <form action="{% url 'course:Chapter_url' question.id|add:-1 %}" method="post">
+                {% csrf_token %}
+                <input type="submit" value="Previous Chapter">
+
             </form>
 
         </div>

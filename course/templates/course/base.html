@@ -33,10 +33,12 @@
             {% endif %}
 
         </div>
-
+        <div class="heading">
+            <p>Course Chapters</p>
+        </div>
         {% if Instruction_Chapters %}
             <ul>
-                {% for chapter in Instruction_Chapters %}
+                {% for chapter in Instruction_Chapters.all %}
                 <li>
                     <!-- wow this took me awhile to figure out. use the URL NAME DEFINED IN THE URL PLEASE not the view name, not the url itself, what we named it -->
 

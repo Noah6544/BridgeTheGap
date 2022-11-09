@@ -15,6 +15,7 @@
 
     </head>
 
+
     <body>
         <div class="topbar">
             <a href="/users/profile">Profile</a>
@@ -22,11 +23,12 @@
 
             {% if user.is_authenticated %}
                 <a href="/users/logout">Logout</a>
-                <a href="/course">Start Learning!</a>
+                <a href="/course">Course Menu</a>
             {% else %}
                 <a href="/users/login">Login</a>
             {% endif %}
         </div>
+
 
          <div class = "course_title">
              {{ Instruction.title}}
