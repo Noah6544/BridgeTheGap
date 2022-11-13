@@ -1,5 +1,6 @@
-{% extends 'users/base.html' %}
+{% extends 'course/topbar.html' %}
 
+<head>
 {% block title %}
 Welcome to Login Page
 {% endblock %}
@@ -7,7 +8,9 @@ Welcome to Login Page
 
 
 
-        {% block main_content %}
+
+
+        {% block content %}
         {% if user.is_authenticated %}
             <h1>You're already logged in!</h1>
         {% else %}

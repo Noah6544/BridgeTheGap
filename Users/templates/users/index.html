@@ -1,20 +1,17 @@
 <!DOCTYPE html>
-{% extends 'users/base.html' %}
+{% extends 'course/topbar.html' %}
 
 
 <html>
-    <title>
         {% block title %}
             User Home Page
         {% endblock %}
-    </title>
 
-{% block main_content %}
+{% block content %}
     <body>
-
+        <div class="heading">
             Hey {{ username }} Welcome to the home page!!
-
-
+        </div>
     </body>
 {% endblock %}
 </html>

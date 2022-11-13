@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-{% extends 'users/base.html' %}
+{% extends 'course/topbar.html' %}
 
 
 <html>
@@ -9,12 +9,13 @@
         {% endblock %}
     </title>
 
-{% block main_content %}
+{% block content %}
     <body>
-
-    <a href="/">Return to Homepage</a>
-
-
+        <div class="heading">
+            You Were Successfully Logged Out!
+        </div>
     </body>
+
+
 {% endblock %}
 </html>

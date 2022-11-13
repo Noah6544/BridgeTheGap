@@ -1,0 +1,23 @@
+{% extends 'course/topbar.html' %}
+{% load static %}
+<link rel="stylesheet" href="{% static 'base.css' %}">
+
+
+{% block title %}
+    CHAPTER DOES NOT EXIST
+{% endblock %}
+
+{% block content %}
+
+<div class="heading">
+    <div class="error">
+    This {{ object }} DOES NOT EXIST.
+    </div>
+</div>
+
+
+<div class="subheading">
+    {{ error_message|linebreaks }}
+
+</div>
+{% endblock %}

@@ -36,7 +36,7 @@ def Register(request):
             form.save()
             user = form.cleaned_data.get('username')
             print( "Account was successfully for " + user +"!")
-            return HttpResponseRedirect('/users/profile/')
+            return HttpResponseRedirect('/users/login/')
         else:
             print("invalid try again")
             return HttpResponseRedirect('/users/login/')

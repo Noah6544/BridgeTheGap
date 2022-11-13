@@ -1,75 +1,52 @@
+{% extends 'course/topbar.html' %}
 {% load static %}
 <link rel="stylesheet" href="{% static 'base.css' %}">
 
-
+{% load course_in_category %}
 
 <html>
     <head>
 
 
-
-
         <div class="title">
             {% block title %}
-            <title>
-                The Bridge Website
-            </title>
+                Course Menu
             {% endblock %}
         </div>
-
-
 
     </head>
 
     <body>
-        <div class="topbar">
-            <a href="/users/profile">Profile</a>
-
-            {% if user.is_authenticated %}
-                <a href="/users/logout">Logout</a>
-
-            {% else %}
-                <a href="/users/login">Login</a>
-            {% endif %}
-
+     {% block content %}
+        <div class="heading">
+            Course Topics
         </div>
+        {% if Topicclass %}
 
-        {% if Instruction_Chapters %}
-            <ul>
-                {% for chapter in Instruction_Chapters %}
-                <li>
-                    <!-- wow this took me awhile to figure out. use the URL NAME DEFINED IN THE URL PLEASE not the view name, not the url itself, what we named it -->
+                {% for topicins in topiclist %}
+                    <div class=""
+                    <div class="heading">
+                    {{ topicins.title }}
+                    </div>
 
-                    {% if chapter.completed == True %}
+                        <!-- wow this took me awhile to figure out. use the URL NAME DEFINED IN THE URL PLEASE not the view name, not the url itself, what we named it -->
+                    {% for chapter in Chapter|in_category:topicins.id %}
+                            <ul>
+                                <li>
+                                    <div class="chapter">
+                                        Chapter #{{ forloop.counter }}!<br>
+                                        <a href="{% url 'course:Chapter_url' chapter.id %}">{{ chapter.title }}</a>
 
-                        <div class="completed_chapter">
-                            <a href="{% url 'course:Chapter_url' chapter.id %}">{{ chapter.title }}</a>
-
-                            <div class="summary">
-                                This chapter covers: {{ chapter.chapter_covers }}
-                            </div>
-                        </div>
-                    {% elif chapter.completed == False %}
-
-                        <div class="incomplete_chapter">
-                            Chapter {{ forloop.counter }}!
-                            <a href="{% url 'course:Chapter_url' chapter.id %}">{{ chapter.title }}</a>
-
-                            <div class="summary">
-                                This chapter covers: {{ chapter.chapter_covers }}
-                            </div>
-                        </div>
-
-                    {% endif %}
-
-                </li>
+                                    <div class="summary">
+                                    This chapter covers: {{ chapter.chapter_covers }}
+                                    </div>
+                                </li>
+                            </ul>
+                    {% endfor %}
                 {% endfor %}
-            </ul>
 
         {% else %}
             No Chapter Content Available, Try Again Later
         {% endif %}
 
-
-
-
+    {% endblock %}
