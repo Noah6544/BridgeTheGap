@@ -1,0 +1,23 @@
+{% extends 'course/topbar.html' %}
+{% load static %}
+<link rel="stylesheet" href="{% static 'base.css' %}">
+
+
+{% block title %}
+    {{ object}} DOES NOT EXIST
+{% endblock %}
+
+
+{% block content %}
+
+<div class="heading">
+    <div class="error">
+    <h1>This {{ object }} DOES NOT EXIST.<hr></h1>
+    </div>
+</div>
+
+
+<div class="main_content">
+    {{ error_message|linebreaks }}
+</div>
+{% endblock %}

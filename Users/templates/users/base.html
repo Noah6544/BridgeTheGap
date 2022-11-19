@@ -1,36 +1,9 @@
-{% load static %}
-<link rel="stylesheet" href="{% static 'base.css' %}">
+{% extends 'course/topbar.html' %}
 
-<style>
-.topbar {
-    height:200px;
-    width:100%;
-    position: fixed;
-    top:0;
-    left:0;
-    background-color:#23DCA6;
-}
 
-.topbar a {
-    padding: 6px 8px 6px 16px;
-    font-size: 25px;
-    display:block;
-}
-
-.main_content{
-
-}
-.title{
-    margin-top:210px;
-}
-
-</style>
 
 <html>
     <head>
-
-
-
 
         <div class="title">
             {% block title %}
@@ -54,10 +27,8 @@
             {% endif %}
 
         </div>
-
-            <div class= "main_content", id="content">
-            {% block main_content %}
-            {% endblock %}
+            <div class= "main_content" id="content">
         </div>
+     {% endblock %}
     </body>
 </html>

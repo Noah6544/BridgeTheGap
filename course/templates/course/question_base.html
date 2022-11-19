@@ -1,42 +1,41 @@
+{% extends 'course/topbar.html' %}
 {% load static %}
-<link rel="stylesheet" href="{% static 'base.css' %}">
+<link rel="stylesheet" href="{% static 'base.css' %}" xmlns="http://www.w3.org/1999/html">
 
-<html>
+
     <head>
-            <title>
-                Quiz #{{ question.chapter_id }}
-            </title>
-
+        {% block title %}
+            Quiz #{{ question.question.id }}
+        {% endblock %}
     </head>
 
-    <body>
+    {% block content %}
+            <div class="title">
+                <h1>Question: "{{ question.question_text }}"</h1>
+            </div>
 
-        <div class="title">
-            {{ question.question_text }}
-        </div>
-        <form action ="{% url 'course:Results_url' question.id %}" method="post">
-            {% csrf_token %}
+            <div class="flex_container" id="flex_container_quiz">
+                    <a href="{% url 'course:Chapter_url' chapter.id %}">Go Back To Chapter</a>
+            </div>
 
-            <fieldset>
-                {% if error_message %}
-                    {{ error_message }}
-                {% endif %}
-                {% for choice in question.choice_set.all %}
-                <div class="list">
+            <div class="quiz_choices">
+                <form action ="{% url 'course:Results_url' chapter.id %}" method="post">
+                    {% csrf_token %}
+                    <fieldset>
+                        {% if error_message %}
+                            {{ error_message }}
+                        {% endif %}
+                        {% for choice in question.choice_set.all %}
+                            <br>
 
-                    <ul>
-                        <ol>
-                            <input type="radio" name="choice" id="choice" value="{{ choice.id }}">
-                            <label for="choice">{{ choice.choice_text }}</label>
-                        </ol>
-                    </ul>
+                                     <h3><label for="{{ choice.choice_text }}"class="labels">{{ choice.choice_text }}</label></h3><h3><input class="checkbox" id="{{ choice.choice_text }}" type="checkbox" name="choice" value="{{choice.id}}"></h3>
+                        {% endfor %}
+                        <div class="button">
+                           <h1> <input type="submit" value="Submit Answer" style="font-family:'Lato'">
+                        </div>
+                        </fieldset>
+                </form>
+            </div>
+            </div>
 
-                </div>
-                {% endfor %}
-                <input type="submit" value="Submit Answer" name="Submit Answer">
-                </fieldset>
-        </form>
-
-
-    </body>
-</html>
+    {% endblock %}

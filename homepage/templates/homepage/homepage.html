@@ -1,25 +1,54 @@
+{% load static %}
+<link rel="stylesheet" href="{% static 'base.css' %}">
+
+
+
+{% block content %}
 <!DOCTYPE html>
 <html>
-    <h1>
-        Welcome to The Gap
-    </h1>
+    <head>
+
+    <body>
+    <div id="flex_container_homepage">
+            <div class="logo">
+                <img src="course/static/imgs/logo_1080.png" alt="bananlogo">
+            </div>
+
+        <div id="flex_subcontainer_homepage">
+
+            <div id="homepage_title">
+                <h1>What is <i>"The Gap?"</i></h1><br>
+            </div>
+
+            <div id="homepage_description">
+                <h4 >
+                This is a web-app created for<i> you </i>to learn.<br>
+                Here, we bridge the gap between <i>"what is code?"</i> to <i>"I can code!"</i><br>
+                You'll learn the absolute basics to start your own projects as soon as possible.
+                </h4>
+            </div>
+
+        </div>
 
 
-    What is this?
+    </div>
 
-    Why is this?
+    </body>
 
-    Course layout:
-    {% if user.is_authenticated %}
-     You're already logged In! Head to your <a href="{% url 'Users:profile_url' %}"> profile</a>
-    {% else %}
-    <p>Don't have an account? <a href="/users/register">register here!</a></p>
-    <p>Already have an account? <a href="/users/login">login here!</a></p>
-    {% endif %}
-
+    <div id="homepage_login_info">
+        {% if user.is_authenticated %}
+        <br>
+        <h4>Head to your  <a href="{% url 'Users:profile_url' %}"> profile</a></h4>
+        {% else %}
+            <h2>So what are you waiting for?</h2>
+        <h4>Don't have an account? <a href="/users/register">register here!</a><br><br></h4>
+        <h4>Already have an account? <a href="/users/login">login here!</a></h4>
+        {% endif %}
+    </div>
 
 
 
 
 
 </html>
+{% endblock %}

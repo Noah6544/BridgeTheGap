@@ -1,69 +1,40 @@
+{% extends 'course/topbar.html' %}
 {% load static %}
 <link rel="stylesheet" href="{% static 'base.css' %}">
 
-
-
 <html>
     <head>
+        {% block title%}
 
-
-
-
-        <div class="title">
-            {% block title %}
-            <title>
-                The Bridge Website
-            </title>
-            {% endblock %}
-        </div>
-
-
+                Results #{{ question.id }}
+        {% endblock %}
 
     </head>
     <body>
-        <div class="topbar">
-            <a href="/users/profile">Profile</a>
-
-            {% if user.is_authenticated %}
-                <a href="/users/logout">Logout</a>
-            {% else %}
-                You're not logged in!
-                <a href="/users/login">Login</a>
-            {% endif %}
-        </div>
+    {% block content %}
 
         <div class="heading">
-            The Question was:
-            {{ question.question_text }}
+            <h1>The Question was:</h1>
+            <h2>{{ question.question_text }}</h2>
         </div>
 
-        <div class="subheading">
-            You Selected:
-            " {{ selected_choice }} "
-        </div>
+            <h3>You Selected:<br>
+            <a>" {{ selected_choice }} "</a> </h3>
         {% if selected_choice.correct_choice == True %}
-            <div class="subheading">
-                Great Job! That's Right!
-            </div>
-            <div class="heading">
-                Explanation:
-            </div>
-            <div class="explanation">
+                <h2>Great Job! That's Right!</h2>
+                <h3>Explanation:</h3>
+            <div class="important_content" id="results_correct">
                 {{ question.explanation }}
             </div>
         {% else %}
-            <div class="subheading">
-                So Close!
-            </div>
-            <div class="heading">
-                Explanation:
-            </div>
-            <div class="explanation">
+             <h2>So Close! You'll get it next time!</h2>
+           <h3>Explanation:</h3>
+            <div class="important_content" id="results_incorrect">
                 {{ question.explanation }}
             </div>
         {% endif %}
         <div class="next_button">
-            <form action="{% url 'course:Chapter_url' question.id|add:1 %}" method="post">
+            <form action="{% url 'course:Chapter_url' chapter.id|add:1 %}" method="post">
                 {% csrf_token %}
 
                 <input type="submit" value="Next Chapter">
@@ -71,15 +42,13 @@
 
         </div>
         <div class="back_button">
-            <form action="{% url 'course:Chapter_url' question.id|add:-1 %}" method="post">
+            <form action="{% url 'course:Chapter_url' chapter.id|add:-1 %}" method="post">
                 {% csrf_token %}
                 <input type="submit" value="Previous Chapter">
 
             </form>
 
         </div>
-
-
-
+    {% endblock %}
     </body>
 </html>

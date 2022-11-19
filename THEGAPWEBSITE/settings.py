@@ -39,7 +39,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'homepage.apps.HomepageConfig',
     'Users.apps.UserConfig',
-    'course.apps.CourseConfig'
+    'course.apps.CourseConfig',
+
 ]
 
 MIDDLEWARE = [
@@ -65,7 +66,9 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+
             ],
+
         },
     },
 ]
@@ -118,7 +121,10 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.1/howto/static-files/
 
-STATIC_URL = 'static/'
+STATIC_URL = 'course/static/'
+LOGIN_URL = '/course/login_redirect'
+LOGIN_REDIRECT_URL = '/course/login_redirect'
+TOPBAR_url = '/course/topbar.html'
 
 
 

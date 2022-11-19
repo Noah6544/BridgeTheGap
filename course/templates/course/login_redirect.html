@@ -1,0 +1,12 @@
+{% extends 'course/topbar.html' %}
+{% load static %}
+<link rel="stylesheet" href="{% static 'base.css' %}">
+
+{% block content %}
+    <div class="heading">
+        You need to be logged in to view this content.<br>
+    </div>
+    <div class="subheading">
+        Please, <a href="{% url 'Users:Login_url' %}">Login Here.</a>
+    </div>
+{% endblock %}

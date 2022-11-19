@@ -1,77 +1,67 @@
+{% extends 'course/topbar.html' %}
 {% load static %}
-<link rel="stylesheet" href="{% static 'base.css' %}">
+<link rel="stylesheet" href="{% static 'base.css' %}" xmlns="http://www.w3.org/1999/html">
 
-
+{% load course_in_category %}
 
 <html>
     <head>
 
 
-
-
         <div class="title">
             {% block title %}
-            <title>
-                The Bridge Website
-            </title>
+                Course Menu
             {% endblock %}
         </div>
-
-
 
     </head>
 
     <body>
-        <div class="topbar">
-            <a href="/users/profile">Profile</a>
-
-            {% if user.is_authenticated %}
-                <a href="/users/logout">Logout</a>
-
-            {% else %}
-                <a href="/users/login">Login</a>
-            {% endif %}
-
-        </div>
+     {% block content %}
         <div class="heading">
-            <p>Course Chapters</p>
+            <h1>Course Topics</h1><hr><br>
         </div>
-        {% if Instruction_Chapters %}
-            <ul>
-                {% for chapter in Instruction_Chapters.all %}
-                <li>
-                    <!-- wow this took me awhile to figure out. use the URL NAME DEFINED IN THE URL PLEASE not the view name, not the url itself, what we named it -->
+        {% if Topicclass %}
+                {% for topicins in topiclist %}
+                <div class="dropdown">
 
-                    {% if chapter.completed == True %}
 
-                        <div class="completed_chapter">
-                            <a href="{% url 'course:Chapter_url' chapter.id %}">{{ chapter.title }}</a>
+                        <div class="topic">
+                            {{ topicins.title }}
+                            <span><div class="topic_description">Description:<br>{{ topicins.description }}</div></span>
 
-                            <div class="summary">
-                                This chapter covers: {{ chapter.chapter_covers }}
-                            </div>
-                        </div>
-                    {% elif chapter.completed == False %}
-
-                        <div class="incomplete_chapter">
-                            Chapter {{ forloop.counter }}!
-                            <a href="{% url 'course:Chapter_url' chapter.id %}">{{ chapter.title }}</a>
-
-                            <div class="summary">
-                                This chapter covers: {{ chapter.chapter_covers }}
-                            </div>
                         </div>
 
-                    {% endif %}
 
-                </li>
+                    <!--  this took me even longer to figure outa. i accidentally got lucky and made the filter just use 1 and not 2 arguments -->
+                    <div class="dropdown_content">
+                        {% for chapter in Chapter|in_category:topicins.id %}
+                            {% if chapter %}
+                                    <div class="chapter_num">
+                                        Chapter #{{ forloop.counter }}!
+                                    </div>
+                                        <!-- wow this took me awhile to figure out. use the URL NAME DEFINED IN THE URL PLEASE not the view name, not the url itself, what we named it -->
+                                    <div class="menu_summary" id="menu">
+                                        This chapter covers:<br>{{ chapter.chapter_covers }}
+                                    </div>
+                                    <div class="chapter_button_link">
+                                        <a href="{% url 'course:Chapter_url' chapter.id %}">{{ chapter.title }}</a><hr>
+                                    </div>
+                            {% else %}
+                                <div class="summary">
+                                    There's no couse content in this topic. Please be patient as we work to update the course.
+                                </div>
+                            {% endif %}
+                    {% endfor %}
+                         </div>
+
                 {% endfor %}
-            </ul>
+                    </input>
+                </div>
 
         {% else %}
             No Chapter Content Available, Try Again Later
         {% endif %}
-
-
-
-
+    </body>
+    {% endblock %}
+</html>

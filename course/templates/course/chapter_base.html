@@ -1,72 +1,60 @@
+{% extends 'course/topbar.html' %}
 {% load static %}
-<link rel="stylesheet" href="{% static 'base.css' %}">
-
+<link rel="stylesheet" href="{% static 'bases.css' %}">
 
 <html>
     <head>
-
         <div class="title">
             {% block title %}
-            <title>
-                The Bridge Website
-            </title>
+                Chapter #{{ Instruction.id }}
             {% endblock %}
         </div>
-
     </head>
 
 
+{% block content %}
     <body>
-        <div class="topbar">
-            <a href="/users/profile">Profile</a>
-            <a href="/">Return to Homepage</a>
 
-            {% if user.is_authenticated %}
-                <a href="/users/logout">Logout</a>
-                <a href="/course">Course Menu</a>
-            {% else %}
-                <a href="/users/login">Login</a>
-            {% endif %}
+    <div class="flex_container" id="flex_course_title">
+        <div class = "course_title">
+             <h1>{{ Chapter.title }}</h1><hr>
         </div>
-
-
-         <div class = "course_title">
-             {{ Instruction.title}}
-        </div>
-
 
         <div class= "chapter_covers">
-            This Chapter Covers:<br>
-            {{ Instruction.chapter_covers }}
+            <h2><i>{{ Chapter.chapter_covers }}</i></h2>
         </div>
+         <h3>Read carefully. You'll be quizzed over this material.</h3>
+    </div>
 
+
+
+    <div class="flex_container" id="flex_course_content">
         <div class= "main_content">
-            Read Carefully.
-            <br>{{ Instruction.content }}
+            {% autoescape off %}
+            {{ Chapter.content|linebreaks }}
+            {% endautoescape %}
         </div>
-
-        <div class = "summary">
-
-                This is a quick summary of the chapter:
-                <br>{{ Instruction.summary }}
-
-        </div>
-
-         <div class = "important_content">
-             Note the following:
+        <div class = "important_content">
+             Important, Note the following:
 
              {% for important in ImportantInstructionContent %}
-             <ul>
-                 <ol>
+                <br>{{ forloop.counter }}.)
                      {{ important.important_content }}
-                 </ol>
-             </ul>
+
              {% endfor %}
         </div>
+    </div>
+    <div class = "chapter_summary">
+        This is a quick summary of the chapter:
+        <br>{{ Chapter.summary }}
+    </div>
 
-
-    Do you understand the content?
-    Head over to take the <a href="{% url 'course:Quiz_url' Instruction.id %}">Quiz!</a>
-
+ </div>
+    <div class="chapter_end">
+        Think you got it?
+        Head over to take the <a href="{% url 'course:Quiz_url' Chapter.id %}">Quiz!</a>
+    </div>
     </body>
+
+{% endblock %}
 </html>

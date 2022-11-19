@@ -1,20 +1,21 @@
 <!DOCTYPE html>
-{% extends 'users/base.html' %}
+{% extends 'course/topbar.html' %}
 
 
 <html>
     <title>
         {% block title %}
-            You Were Successfully Logged Out!
+            <h1>You Were Successfully Logged Out!</h1>
         {% endblock %}
     </title>
 
-{% block main_content %}
+{% block content %}
     <body>
-
-    <a href="/">Return to Homepage</a>
-
-
+        <div class="heading">
+            <h1> You Were Successfully Logged Out!</h1>
+        </div>
     </body>
+
+
 {% endblock %}
 </html>
