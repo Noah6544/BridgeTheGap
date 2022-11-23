@@ -69,30 +69,6 @@
     }
 
 }
-
-@keyframes course_topics {
-
-0% {
-    width: 0%;
-    height: auto;
-    font-size: 0px;
-}
-
-
-100% {
-    opacity: 1;
-    height: auto;
-    margin: var(--narrow);
-    margin-bottom: 30px;
-    align-items: center;
-    background-color: var(--color-primary-2);
-    border-radius: 40px;
-    border: var(--border);
-        font-size: 18px;
-
-}
-
-}
 /* MAIN STUFF */
 header {
     background: #333;
@@ -142,7 +118,9 @@ form li { /* don't display the lines of password info */
 }
 
 /* LOGIN STUFF */
-
+.login {
+    margin-top: 150px;
+}
 .login,input {
     text-align: left;
     justify-content: left;
@@ -193,8 +171,8 @@ form li { /* don't display the lines of password info */
 
 #homepage_description{
     background-color: var(--light_green);
-    padding:30px;
-    width: var(--narrow);
+    padding:15px;
+    width: 75%;
     border: var(--border);
     margin: 0 auto;
     margin-bottom: 35px;
@@ -253,7 +231,7 @@ input {
     font-size: 21px;
 }
 
-input:hover{ /* TODO add animation */
+input:hover{
     margin-left: 45px;
     margin-right: 45px;
     font-size: 25px;
@@ -323,15 +301,6 @@ label {
     color: black;
     border: var(--border);
     box-shadow: 0px 0px 10px var(--color-primary-0);
-}
-
-}
-
-
-.results_buttons {
-    display:flex;
-    flex-direction: row;
-    justify-content: center;
 }
 
 
@@ -480,6 +449,7 @@ h4{
     }
 
 .chapter_summary{
+    font-size: 19px;
     margin-bottom: 10px;
     margin: 0 auto;
     border: var(--border);
@@ -488,6 +458,7 @@ h4{
     background-color: var(--color-primary-1);
 }
 .menu_summary{
+    font-size: 19px;
     margin-bottom: 10px;
     margin: 0 auto;
 
@@ -521,23 +492,30 @@ h4{
     margin: auto;
 }
 
+.dropdown_content hr{
+    width: 15%;
+}
 .dropdown_content{
-    opacity: 0;
     height: 0;
-    width: var(--narrow);
-    margin: auto;
-    align-items: center;
+    opacity: 0;
 
 
 
 }
 
 .dropdown:hover .dropdown_content{ /* dropdown2 hover works for each individual topic BUT you can't select the linkts */
-
+    opacity: 1;
+    height: auto;
+    width: var(--narrow);
+    margin: 0 auto;
+    margin-bottom: 30px;
+    align-items: center;
+    background-color: var(--color-primary-2);
+    border-radius: 40px;
+    border: var(--border);
     cursor: pointer;
 
-    animation: 3s linear 0s 1 course_topics;
-    animation-fill-mode: forwards;
+
 
 }
 
@@ -554,7 +532,7 @@ ol {
 }
 
 .chapter_num{
-    font-size: 20px;
+    font-size: 21px;
     font-weight: bold;
 }
 .chapter_end{
@@ -572,6 +550,7 @@ ol {
 .chapter_button_link {
     color: blue;
     margin: auto;
+    margin-bottom: 25px;
 }
 
 .subheading {

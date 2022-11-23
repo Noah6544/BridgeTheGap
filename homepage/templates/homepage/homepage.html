@@ -42,11 +42,11 @@
     <div id="homepage_login_info">
         {% if user.is_authenticated %}
         <br>
-        <h4>Head to your  <a href="{% url 'Users:profile_url' %}"> profile</a></h4>
+        <h3>Head to your  <a href="{% url 'Users:profile_url' %}"> profile</a></h3>
         {% else %}
             <h2>So what are you waiting for?</h2>
-        <h4>Don't have an account? <a href="/users/register">register here!</a><br><br></h4>
-        <h4>Already have an account? <a href="/users/login">login here!</a></h4>
+        <h3>Don't have an account? <a href="/users/register">register here!</a><br><br></h3>
+        <h3>Already have an account? <a href="/users/login">login here!</a></h3>
         {% endif %}
     </div>
 

@@ -41,6 +41,14 @@
             </div>
         {% endif %}
         <div class="results_buttons">
+               <div class="next_button">
+                <form action="{% url 'course:Chapter_url' chapter.id|add:1 %}" method="post">
+                    {% csrf_token %}
+
+                    <input type="submit" value="Next Chapter">
+                </form>
+
+            </div>
               <div class="back_button">
                 <form action="{% url 'course:Chapter_url' chapter.id|add:-1 %}" method="post">
                     {% csrf_token %}
@@ -49,14 +57,7 @@
                 </form>
 
             </div>
-            <div class="next_button">
-                <form action="{% url 'course:Chapter_url' chapter.id|add:1 %}" method="post">
-                    {% csrf_token %}
 
-                    <input type="submit" value="Next Chapter">
-                </form>
-
-            </div>
 
         </div>
     {% endblock %} <!-- TODO add a short contact me for questions concerns comments and feedback section -->
