@@ -121,6 +121,7 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.1/howto/static-files/
 
+STATIC_ROOT = "C:/CODING/2022/researchDjangostuff/BridgeTheGap/course/static"
 STATIC_URL = 'course/static/'
 LOGIN_URL = '/course/login_redirect'
 LOGIN_REDIRECT_URL = '/course/login_redirect'
