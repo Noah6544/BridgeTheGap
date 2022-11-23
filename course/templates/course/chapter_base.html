@@ -1,7 +1,7 @@
 {% extends 'course/topbar.html' %}
 {% load static %}
 <link rel="stylesheet" href="{% static 'bases.css' %}">
-
+{% load course_in_category %}
 <html>
     <head>
         <div class="title">
@@ -30,16 +30,16 @@
 
     <div class="flex_container" id="flex_course_content">
         <div class= "main_content">
-            {% autoescape off %}
-            {{ Chapter.content|linebreaks }}
-            {% endautoescape %}
+
+{{ Chapter.content|user_tag:user }} <!-- leave this unindented, as the css considers the whitespace as lines. -->
+
         </div>
         <div class = "important_content">
              Important, Note the following:
 
              {% for important in ImportantInstructionContent %}
                 <br>{{ forloop.counter }}.)
-                     {{ important.important_content }}
+                     {{ important.important_content|user_tag:user }}
 
              {% endfor %}
         </div>

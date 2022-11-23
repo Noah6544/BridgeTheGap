@@ -15,9 +15,9 @@ class Topic(models.Model):
         return self.title
 
 class Chapter(models.Model):
-    topic = models.ForeignKey(Topic, on_delete=models.CASCADE,default="")
+    topic = models.ForeignKey(Topic, on_delete=models.CASCADE,default="") # TODO create a way to interactively edit chapter order. like a trello board list within the admin.
     title = models.CharField(max_length=100,default="Title")
-    content = models.TextField(max_length=10000,default="Content")
+    content = models.TextField(max_length=100000,default="Content")
     chapter_covers = models.CharField(max_length=50,default="Chapter covers:")
     summary = models.CharField(max_length=500,default="Chapter Summary:")
     completed = models.BooleanField(default=False)
@@ -30,7 +30,7 @@ class Chapter(models.Model):
 
 class ImportantInstructionContent(models.Model):
     chapter = models.ForeignKey(Chapter, on_delete=models.CASCADE, default="")
-    important_content = models.TextField(max_length=100,default="")
+    important_content = models.TextField(max_length=300,default="")
     def __str(self):
         return self.important_content
 
@@ -38,7 +38,9 @@ class ImportantInstructionContent(models.Model):
 
 class Question(models.Model):
     chapter = models.ForeignKey(Chapter, on_delete=models.CASCADE, default="")
-    question_text = models.CharField(max_length=200,default="Let's Write Your First Program!")
+    question_code_text = models.TextField(max_length=1500, default=None,blank=True, null=True)
+
+    question_text = models.CharField(max_length=200,default="Question_text")
     pub_date = models.DateTimeField("date published")
     explanation = models.TextField(default="Explanation")
     def __str__(self):

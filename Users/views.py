@@ -36,14 +36,14 @@ def Register(request):
             form.save()
             user = form.cleaned_data.get('username')
             print( "Account was successfully for " + user +"!")
-            return HttpResponseRedirect('/users/login/')
+            return render(request,'users/register_success.html/',context={})
         else:
             print("invalid try again")
-            return HttpResponseRedirect('/users/login/')
+            print('errors + '+ str(form.errors))
+            return render(request,'users/register_fail.html/',context={'form': form})
 
     context={'form':form}
     return render(request, 'users/register.html',context)
-
 
 
 def Login(request):

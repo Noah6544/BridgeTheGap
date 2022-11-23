@@ -3,13 +3,14 @@
 {% block content %}
 
 <h1>Register Here</h1>
-
-<form method="post" action="">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <input type="submit"  value="Create Account">
-    {{ form.errors }}
-</form>
+<div class="form_group">
+    <form method="post" action="">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <input type="submit" value="Create Account">
+        {{ form.errors }}
+    </form>
+</div>
 
     <p>Already have an account? <a href="/users/login">login here</a></p>
 {% endblock %}

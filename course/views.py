@@ -89,7 +89,6 @@ def QuizView(request,chapter_id):
 @login_required
 def ResultsView(request,chapter_id):
     print(request.POST)
-    user = User.objects.get(pk=chapter_id)
     CurrentChapter = Chapter.objects.get(pk=chapter_id)
 
     QuizQuestion = Question.objects.get(chapter=CurrentChapter)
@@ -110,8 +109,8 @@ def ResultsView(request,chapter_id):
         if selected_choice.correct_choice == True:
             print("the selected choice: " + str(selected_choice) + "Is true")
 
-            return render(request, 'course/results_base.html',{'question':QuizQuestion,'selected_choice':selected_choice,'chapter':CurrentChapter})
+            return render(request, 'course/results_base.html',{'ChoiceSet':ChoiceOptions,'question':QuizQuestion,'selected_choice':selected_choice,'chapter':CurrentChapter})
 
         elif selected_choice.correct_choice == False:
-            return render(request, 'course/results_base.html',{'question':QuizQuestion,'selected_choice':selected_choice,'chapter':CurrentChapter})
+            return render(request, 'course/results_base.html',{'ChoiceSet':ChoiceOptions,'question':QuizQuestion,'selected_choice':selected_choice,'chapter':CurrentChapter})
 

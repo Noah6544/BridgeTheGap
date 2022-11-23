@@ -1,0 +1,10 @@
+{% extends 'course/topbar.html' %}
+
+{% block content %}
+
+    <h1>Registration Failed.</h1>
+    <h2>Please <a href="{% url 'Users:Register_url' %}">Try Again</a></h2>
+    <h3>Errors:</h3>
+    {{ form.errors }}
+
+{% endblock %}

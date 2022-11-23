@@ -17,7 +17,7 @@ class TopicAdmin(admin.ModelAdmin):
 
 class QuestionAdmin(admin.ModelAdmin):
     fieldsets = [
-        ("Question Information", {'fields': ['question_text','chapter','explanation']}),
+        ("Question Information", {'fields': ['question_text','chapter','question_code_text','explanation']}),
         ('Date information', {'fields': ['pub_date'], 'classes': ['collapse']}),
 
     ]
@@ -32,7 +32,7 @@ class ImportantInstructionContentInLine(admin.TabularInline):
     model = ImportantInstructionContent
 
 
-    extra = 2
+    extra = 4
 class ChapterAdmin(admin.ModelAdmin):
     fieldsets = [
         (None, {'fields':['title','topic']}),

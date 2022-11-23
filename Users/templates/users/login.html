@@ -8,34 +8,31 @@ Welcome to Login Page
 
 
 
-
-
         {% block content %}
         {% if user.is_authenticated %}
             <h1>You're already logged in!</h1>
         {% else %}
             <html>
-
+        <div class="login">
             {% if messages %}
                 {% for message in messages %}
                     <div class="alert alert-warning alert-dismissible fade show" role="alert">
                         {{ message }}
-                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                     </div>
                 {% endfor %}
             {% endif %}
             <form action="" method="post">
                 {% csrf_token %}
-                <label for="username">Username: </label><br>
+                <label for="username">Username</label><br>
                 <input type="text" id="username" name="username"><br>
-                <label for="password">Password: </label><br>
+                <label for="password">Password</label><br>
                 <input type="password" id="password" name="password">
                 <br>
                 <input type="submit"  value="Submit">
             </form>
 
             <p>Don't have an account? <a href="/users/register">register here</a></p>
-
+        </div>
         </html>
         {% endif %}
         {% endblock %}
