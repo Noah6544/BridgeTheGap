@@ -25,14 +25,14 @@
                 {% for topicins in topiclist %}
                 <div class="dropdown">
 
-
+                <div class="dropdown2">
                         <div class="topic">
                             {{ topicins.title }}
                             <span><div class="topic_description">Description:<br>{{ topicins.description }}</div></span>
 
                         </div>
 
-
+                </div>
                     <!--  this took me even longer to figure outa. i accidentally got lucky and made the filter just use 1 and not 2 arguments -->
                     <div class="dropdown_content">
                         {% for chapter in Chapter|in_category:topicins.id %}
@@ -45,11 +45,11 @@
                                         This chapter covers:<br>{{ chapter.chapter_covers }}
                                     </div>
                                     <div class="chapter_button_link">
-                                        <a href="{% url 'course:Chapter_url' chapter.id %}">{{ chapter.title }}</a><hr>
+                                        <a href="{% url 'course:Chapter_url' chapter.id %}">{{ chapter.title }}</a>
                                     </div>
                             {% else %}
                                 <div class="summary">
-                                    There's no couse content in this topic. Please be patient as we work to update the course.
+                                    There's no course content in this topic. Please be patient as we work to update the course.
                                 </div>
                             {% endif %}
                     {% endfor %}

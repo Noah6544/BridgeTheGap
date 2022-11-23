@@ -19,39 +19,84 @@
     --color-primary-3:  #009947;
     --color-primary-4:  #007637;
     --color-primary-5:  #0DAAFF;
-    --color-primary-6:  #FF3900;
+    --color-primary-6:  #0083ca;
+    --color-primary-7:  #FF3900;
+    --code_text:  #f9f5fc;    /* for text */
     --border: solid var(--color-primary-3) 2px;
-
-
+    --code_bg: #2B3245;
     --wide: 75%;
     --narrow: 50%;
 }
 /* KEYFRAES */
+
+
 @keyframes logo_on_load {
-  from {
-    width: 100%;
-    opacity: 1;
-  }
-  100% {
-    width:0%;
-    opacity: 0;
-    margin-top:-75px;
-  }
+    0% {
+        width: 100%;
+        height: auto;
+        opacity: 1;
+    }
+    100% {
+        width:0%;
+        height: auto;
+        opacity: 0;
+        margin-top:-75px;
+    }
 }
+
 @keyframes navbar_dropdown {
     from {
-        transform: translateY(-100%)
+        transform: translateY(-150%)
     }
     to {
         transform: translateY(0);
     }
 }
 
+
+
+@keyframes choice_hover {
+    from{
+    }
+    to {
+
+    margin-left: 45px;
+    margin-right: 45px;
+    border-radius: 15px;
+    border: var(--border);
+    background-color: var(--light_green);
+    box-shadow: 0px 0px 10px var(--light_green);
+    }
+
+}
+
+@keyframes course_topics {
+
+0% {
+    width: 0%;
+    height: auto;
+    font-size: 0px;
+}
+
+
+100% {
+    opacity: 1;
+    height: auto;
+    margin: var(--narrow);
+    margin-bottom: 30px;
+    align-items: center;
+    background-color: var(--color-primary-2);
+    border-radius: 40px;
+    border: var(--border);
+        font-size: 18px;
+
+}
+
+}
+/* MAIN STUFF */
 header {
-
-
-  background: #333;
-  padding: 30px;
+    background: #333;
+    padding: 30px;
 }
 
 @font_face {
@@ -66,6 +111,7 @@ html {
     /* background-image: linear-gradient(180deg,var(--grey),var(--light_green)); */
     font-family: "Lato";
     line-height: 2;
+
 }
 
 hr {
@@ -81,16 +127,44 @@ hr {
     align-items: center;
 
 }
+/* REGISTER STUFF */
+.form_group p{
+    text-align: left;
+}
+form li { /* don't display the lines of password info */
+
+    width: var(--narrow);
+    text-align: left;
+    list-style: none;
+    margin-left:-42px;
+    font-size: 15px;
+
+}
+
+/* LOGIN STUFF */
+
+.login,input {
+    text-align: left;
+    justify-content: left;
+    margin-left: 50px;
+
+}
+
+.login input {
+    margin-left: -3px;
+}
+
 
 /* HOMEPAGE STUFF */
 
 #flex_container_homepage {
     display: flex;
     flex-direction:column;
+
 }
 
 
-.logo img{
+.logo img {
     width:100%;
     display: flex;
     flex-width: 45px;
@@ -100,14 +174,9 @@ hr {
     border-radius: 30px;
     margin-top:-65px;
     border: var(--border);
-    animation: 15s ease-in-out 1s 1 logo_on_load;
+    animation: 11s ease-in-out 1s 1 logo_on_load;
     animation-fill-mode: forwards;
-
-
-
 }
-
-
 
 #flex_subcontainer_homepage{
     display: flex;
@@ -136,34 +205,106 @@ hr {
 
 /* CHAPTER STUFF */
 
-/* QUIZ STUFF */
 
-.quiz_choice {
-    font-style: normal;
-    font-weight:normal;
-    color: black;
-    padding: 20px;
-    border-radius: 35px;
-    background-color: var(--color-primary-5);
-    margin: auto;
-    width: var(--narrow);
-    margin-bottom: 30px;
-    margin-top: 30px;
+/* QUIZ STUFF */
+.question_code_text {
+
+    background-color: var(--code_bg);
+    color: var(--code_text);
+    display: flex;                      /* put  it in a flex, align the text to the left, then drag the flex to the center */
+    text-align: left;
+    justify-content: center;
+    padding: 30px;
+    font-size: 18px;
+    border-radius: 15px;
+    margin: 100px;
+     margin-left: 350px;
+    margin-right: 350px;
+
+
+}
+
+.quiz_choices {
+    margin-top: 45px;
+    margin-bottom: 45px;
+    margin-left: 60px;
 }
 
 .checkbox {
-    color: red;
+    margin-bottom: 45px;
+    font-size: 15px;
+        box-shadow: none;
+
+}
+
+input {
+    padding: 15px;
+    margin: 15px;
+    border-radius: 15px;
+    margin-top: 15px;
+    border: var(--border);
+    background-color: var(--light_green);
+    box-shadow: 0px 0px 10px var(--light_green);
+    -webkit-transition: all .3s ease;
+    -moz-transition: all .3s ease;
+    -o-transition: all .3s ease;         /* while using keyframs is cleaner, this allows for backwards animations 8*/
+    -ms-transition: all .3s ease;
+    transition: all .3s ease;
+    font-size: 21px;
+}
+
+input:hover{ /* TODO add animation */
+    margin-left: 45px;
+    margin-right: 45px;
+    font-size: 25px;
+    border: var(--border);
+    background-color: var(--light_green);
+    box-shadow: 0px 0px 20px var(--light_green);
+}
+
+#submit {
+    background-color: var(--color-primary-5);
+    border: none;
+    border-radius:5px;
+    color: black;
+    font-family: "Lato";
+    padding: 20px 20px;
+    margin: 20px 20px;
+    font-size: 17px;
+    font-weight: bold;
+    cursor: pointer;
+    box-shadow: 0px 0px 10px var(--color-primary-5);
+
+    -webkit-transition: all 1s ease;
+    -moz-transition: all 1s ease;
+    -o-transition: all 1s ease;         /* while using keyframs is cleaner, this allows for backwards animations 8*/
+    -ms-transition: all 1s ease;
+    transition: all 1s ease;
+
+ }
+
+#submit:hover {
+    box-shadow: 0px 0px 100px 15px var(--color-primary-5);
+    font-size: 15px;
+    font-weight: 900;
+    padding: 40px;
+    margin: 40;
+    font-size: 20px;
+    animation-fill-mode: both;
+
 }
 
 label {
     background: var(--color-primary-5);
+    box-shadow: 0px 0px 10px var(--color-primary-5);
     padding: 0.5rem 1rem;
     border-radius: 0.5rem;
+    font-size: 21px;
 }
 
-label::after{
+.label:hover{
     background: var(--color-primary-6);
-    opacity:0;
+    cursor: pointer;
 
 }
 
@@ -178,11 +319,21 @@ label::after{
     padding: 25px;
     margin: 0 auto;
     width: var(--narrow);
-       box-shadow: 0px 0px 10px var(--color-primary-6);
-
-
+    background-color: var(--light_green);
+    color: black;
+    border: var(--border);
+    box-shadow: 0px 0px 10px var(--color-primary-0);
+}
 
 }
+
+
+.results_buttons {
+    display:flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
 
 
 #results_correct {
@@ -197,29 +348,6 @@ label::after{
 }
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 /* LOGOUT STUFF */
 
 
@@ -232,9 +360,7 @@ fieldset {
     border: none;
 
 }
-.checkbox{
-    width: 100px;
-}
+
 
 
 
@@ -291,9 +417,10 @@ fieldset {
     color: white;
     font-size: 25px;
     font-weight: bold;
+    padding: 15px;
     line-height: 1.8;
     border-radius: 15px;
-    background-color: var(--color-primary-6);
+    background-color: var(--color-primary-7);
     text-shadow: 0px 0px 3px white;
     border: solid red 2px;
     margin: 75px;
@@ -330,19 +457,29 @@ h4{
 
 
 
-.main_content{
+.main_content {
+
+
     display: flex;
+    text-align: left;
     flex-direction: column;
+    justify-content: left;
     font-size: 27px;
     width: var(--wide);
     border: var(--border);
     border-radius: 30px;
     margin: auto;
+    flex-wrap: wrap;
     background-color: var(--color-primary-1);
-}
+    padding: 30px;
+    white-space: pre-wrap;  /* code found online to help with my no linebreaks issue */
+        box-shadow: 0px 0px 10px 1px var(--color-primary-3);
+
+
+
+    }
 
 .chapter_summary{
-    font-size: 19px;
     margin-bottom: 10px;
     margin: 0 auto;
     border: var(--border);
@@ -351,7 +488,6 @@ h4{
     background-color: var(--color-primary-1);
 }
 .menu_summary{
-    font-size: 19px;
     margin-bottom: 10px;
     margin: 0 auto;
 
@@ -386,19 +522,23 @@ h4{
 }
 
 .dropdown_content{
-    display: none;
-}
-
-.dropdown:hover .dropdown_content{
-    display: flex;
-    flex-direction: column;
+    opacity: 0;
+    height: 0;
     width: var(--narrow);
     margin: auto;
-    background-color: var(--color-primary-2);
-    border-radius: 40px;
-    border: var(--border);
     align-items: center;
-    margin-bottom: 30px;
+
+
+
+}
+
+.dropdown:hover .dropdown_content{ /* dropdown2 hover works for each individual topic BUT you can't select the linkts */
+
+    cursor: pointer;
+
+    animation: 3s linear 0s 1 course_topics;
+    animation-fill-mode: forwards;
+
 }
 
 
@@ -437,10 +577,7 @@ ol {
 .subheading {
 
 }
-.dropdown {
-    display: inline;
 
-}
 .topic {
     display: flex;
     flex-direction: column;
@@ -466,6 +603,8 @@ ol {
 
 #profile {
     display:flex;
+    text-align: center;
+    padding: 0px;
 }
 
 a {
@@ -495,37 +634,19 @@ a:hover {
     background-color: var(--darker_green);
     font-weight: bold;
     border: var(--border);
-    cursor: grab;
+    cursor: pointer;
 }
 .active {
     border: var(--border);
 }
 
-.quiz_choice:hover {
-    font-style: normal;
-    font-weight:normal;
-    color: black;
-    padding: 20px;
-    border-radius: 35px;
-    background-color: var(--color-primary-5);
-    margin: auto;
-    width: var(--narrow);
-    margin-bottom: 30px;
-    margin-top: 30px;
-    cursor: grab;
-}
-
-input,submit {
-    background-color: var(--color-primary-5);
-    border: none;
-    border-radius:5px;
-    color: black;
-    font-family: "Lato";
-    font-size: 20px;
-    padding: 20px 20px;
-    margin: 20px 20px;
-    cursor: pointer;
 
 #{{ choice.choice_text }} {
     font-size: 200px;
+
+    }
+input #username {
+    background-color: var(--color-primary-3);
+
+
 }

@@ -15,16 +15,23 @@
 
         <div class="heading">
             <h1>The Question was:</h1>
-            <h2>{{ question.question_text }}</h2>
+            <h2><i>"{{ question.question_text }}"</i></h2>
         </div>
 
             <h3>You Selected:<br>
-            <a>" {{ selected_choice }} "</a> </h3>
+
+            <a>" {{ selected_choice }} "</a> </h3><br>
+            <h3>The correct choice(s):</h3>
+            {% for choice in ChoiceSet %}
+                {% if choice.correct_choice == True %}
+                    <h4>Choice #{{forloop.counter}}: {{ choice.choice_text }}</h4> <!-- I'M SO GOOD AT DJANGO WORKED FIRST TRY with going to the shell and ooooh lets go 11/21/22 -->
+                {% endif %}
+            {% endfor %}
         {% if selected_choice.correct_choice == True %}
                 <h2>Great Job! That's Right!</h2>
                 <h3>Explanation:</h3>
             <div class="important_content" id="results_correct">
-                {{ question.explanation }}
+                {{ question.explanation|linebreaksbr }}
             </div>
         {% else %}
              <h2>So Close! You'll get it next time!</h2>
@@ -33,22 +40,25 @@
                 {{ question.explanation }}
             </div>
         {% endif %}
-        <div class="next_button">
-            <form action="{% url 'course:Chapter_url' chapter.id|add:1 %}" method="post">
-                {% csrf_token %}
+        <div class="results_buttons">
+              <div class="back_button">
+                <form action="{% url 'course:Chapter_url' chapter.id|add:-1 %}" method="post">
+                    {% csrf_token %}
+                    <input type="submit" value="Previous Chapter">
 
-                <input type="submit" value="Next Chapter">
-            </form>
+                </form>
+
+            </div>
+            <div class="next_button">
+                <form action="{% url 'course:Chapter_url' chapter.id|add:1 %}" method="post">
+                    {% csrf_token %}
+
+                    <input type="submit" value="Next Chapter">
+                </form>
+
+            </div>
 
         </div>
-        <div class="back_button">
-            <form action="{% url 'course:Chapter_url' chapter.id|add:-1 %}" method="post">
-                {% csrf_token %}
-                <input type="submit" value="Previous Chapter">
-
-            </form>
-
-        </div>
-    {% endblock %}
+    {% endblock %} <!-- TODO add a short contact me for questions concerns comments and feedback section -->
     </body>
 </html>
