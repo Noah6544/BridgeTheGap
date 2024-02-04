@@ -7,7 +7,7 @@
 - I made this for my Junior research project
   - From the data collected, users of my website are more confident in their learning, and programming ability! 
 - This was my *very first* time ever working with Django, and my second web project ever.
-- I prioritized backend functionality and didn't know about good front end design, and I didn't have the time to figure it out. Ignore the horrible CSS.
+- I prioritized backend functionality and didn't know about good front end design, and I didn't have the time to figure it out. Ignore the horrible design.
 
 
 # Notes 
